@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        this.pendingIntent = PendingIntent.getActivity(
+        this.pendingIntent = PendingIntent.getService(
                 this,
                 0,
                 Intent(this, TransitionIntentService::class.java),
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         this.activityRecognitionClient
                 .requestActivityTransitionUpdates(
                         ActivityTransitionRequest(
-                            listOf(
+                            mutableListOf(
                                     ActivityTransition.Builder()
                                             .setActivityType(DetectedActivity.IN_VEHICLE)
                                             .setActivityTransition(
